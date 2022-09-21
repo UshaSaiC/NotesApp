@@ -39,6 +39,13 @@ struct ContentView: View {
         }
     }
     
+    func delete(offset: IndexSet) {
+        withAnimation{
+            notes.remove(atOffsets: offset)
+            save()
+        }
+    }
+    
     var body: some View {
         VStack {
             NavigationView {
@@ -69,17 +76,29 @@ struct ContentView: View {
                 .navigationBarTitle("Notes")
             }
             Spacer()
-            List {
-                ForEach(0..<notes.count, id: \.self) { index in
-                    HStack{
-                        Capsule()
-                            .frame(width: 4)
-                            .foregroundColor(.accentColor)
-                        Text(notes[index].text)
-                            .lineLimit(1)
-                            .padding(.leading, 5)
+            if notes.count>=1 {
+                List {
+                    ForEach(0..<notes.count, id: \.self) { index in
+                        HStack{
+                            Capsule()
+                                .frame(width: 4)
+                                .foregroundColor(.accentColor)
+                            Text(notes[index].text)
+                                .lineLimit(1)
+                                .padding(.leading, 5)
+                        }
                     }
+                    .onDelete(perform: delete)
                 }
+            } else {
+                Spacer()
+                Image(systemName: "note.text")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.gray)
+                    .opacity(0.25)
+                    .padding(25)
+                Spacer()
             }
         }
         .onAppear(perform: {
