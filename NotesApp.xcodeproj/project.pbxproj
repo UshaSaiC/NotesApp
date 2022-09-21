@@ -12,6 +12,7 @@
 		B2B75C7228DB020C00408D19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B75C7128DB020C00408D19 /* ContentView.swift */; };
 		B2B75C7428DB020E00408D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B75C7328DB020E00408D19 /* Assets.xcassets */; };
 		B2B75C7728DB020E00408D19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B75C7628DB020E00408D19 /* Preview Assets.xcassets */; };
+		B2B75C8628DB299500408D19 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B75C8528DB299500408D19 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		B2B75C7128DB020C00408D19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B2B75C7328DB020E00408D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B75C7628DB020E00408D19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2B75C8528DB299500408D19 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +80,9 @@
 		B2B75C6E28DB020C00408D19 /* NotesApp Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				B2B75C8428DB297E00408D19 /* Model */,
 				B2B75C6F28DB020C00408D19 /* NotesAppApp.swift */,
-				B2B75C7128DB020C00408D19 /* ContentView.swift */,
+				B2B75C8328DB28E200408D19 /* View */,
 				B2B75C7328DB020E00408D19 /* Assets.xcassets */,
 				B2B75C7528DB020E00408D19 /* Preview Content */,
 			);
@@ -92,6 +95,22 @@
 				B2B75C7628DB020E00408D19 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B2B75C8328DB28E200408D19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2B75C7128DB020C00408D19 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2B75C8428DB297E00408D19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2B75C8528DB299500408D19 /* Note.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +213,7 @@
 			files = (
 				B2B75C7228DB020C00408D19 /* ContentView.swift in Sources */,
 				B2B75C7028DB020C00408D19 /* NotesAppApp.swift in Sources */,
+				B2B75C8628DB299500408D19 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
