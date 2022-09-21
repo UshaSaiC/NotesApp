@@ -17,7 +17,6 @@ struct ContentView: View {
     }
     
     func save(){
-        // dump(notes)
         do{
             let data = try JSONEncoder().encode(notes)
             let url = getDocumentDirectory().appendingPathComponent("notes")
@@ -47,23 +46,17 @@ struct ContentView: View {
     }
     
     var body: some View {
+        NavigationView {
         VStack {
-            NavigationView {
                 HStack(alignment: .center, spacing: 6){
                     TextField("Add New Note",text: $text)
                     
                     Button {
-                        
-                        guard text.isEmpty == false else {return} // used to ensure buttons action is executed only when the text field is not empty.. else we are going out directly
-                        
-                        let note = Note(id: UUID(), text: text) // creating a new note item and initialising it
-                        
-                        notes.append(note) // combining or collating all the notes
-                        
-                        text = "" // emptying the text field after button click
-                        
+                        guard text.isEmpty == false else {return}
+                        let note = Note(id: UUID(), text: text)
+                        notes.append(note)
+                        text = ""
                         save()
-                        
                     } label: {
                         Image(systemName: "plus.circle")
                             .font(.system(size: 42, weight: .semibold))
@@ -73,19 +66,19 @@ struct ContentView: View {
                     .buttonStyle(PlainButtonStyle())
                     .foregroundColor(.accentColor)
                 }
-                .navigationBarTitle("Notes")
-            }
             Spacer()
             if notes.count>=1 {
                 List {
                     ForEach(0..<notes.count, id: \.self) { index in
-                        HStack{
-                            Capsule()
-                                .frame(width: 4)
-                                .foregroundColor(.accentColor)
-                            Text(notes[index].text)
-                                .lineLimit(1)
-                                .padding(.leading, 5)
+                        NavigationLink(destination: DetailView(note: notes[index], count: notes.count, index: index)) {
+                            HStack{
+                                Capsule()
+                                    .frame(width: 4)
+                                    .foregroundColor(.accentColor)
+                                Text(notes[index].text)
+                                    .lineLimit(1)
+                                    .padding(.leading, 5)
+                            }
                         }
                     }
                     .onDelete(perform: delete)
@@ -104,6 +97,8 @@ struct ContentView: View {
         .onAppear(perform: {
             load()
         })
+        .navigationBarTitle("Notes")
+    }
     }
 }
 
